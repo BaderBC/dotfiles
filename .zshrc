@@ -13,7 +13,21 @@ plug "hlissner/zsh-autopair"
 # Aliases:
 alias c="clear"
 alias q="exit"
+alias v="nvim"
+alias ys="sudo apt install -y"
+
+# Other exports
+export GOPATH=$HOME/go
+export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
 
 # Load and initialise completion system
 autoload -Uz compinit
 compinit
+
+# pnpm
+export PNPM_HOME="/home/bstrama/.local/share/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+# pnpm end
