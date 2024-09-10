@@ -14,11 +14,24 @@ plug "hlissner/zsh-autopair"
 alias c="clear"
 alias q="exit"
 alias v="nvim"
-alias ys="sudo apt install -y"
+alias python="python3"
+
+if which apt &> /dev/null
+then
+	alias y="sudo apt -y"
+	alias ys="y install"
+fi
+if which yay &> /dev/null
+then
+	alias y="yay --noconfirm"
+	alias ys="y -S"
+fi
 
 # Other exports
 export GOPATH=$HOME/go
 export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
+export PATH=$PATH:/usr/local/go/bin
+export PATH=$PATH:/opt/gradle/latest/bin
 
 # Load and initialise completion system
 autoload -Uz compinit
@@ -31,3 +44,7 @@ case ":$PATH:" in
   *) export PATH="$PNPM_HOME:$PATH" ;;
 esac
 # pnpm end
+
+
+# Load Angular CLI autocompletion.
+source <(ng completion script)
