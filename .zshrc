@@ -26,6 +26,12 @@ then
 	alias y="yay --noconfirm"
 	alias ys="y -S"
 fi
+if which brew &> /dev/null
+then
+	alias y="brew"
+	alias ys="y install"
+	alias yse="y search"
+fi
 
 # Other exports
 export GOPATH=$HOME/go
@@ -45,6 +51,3 @@ case ":$PATH:" in
 esac
 # pnpm end
 
-
-# Load Angular CLI autocompletion.
-source <(ng completion script)
